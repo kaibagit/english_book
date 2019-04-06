@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>复习：</h1>
+<h2>今日记住<%= @remember_count %>个，没记住<%= @donot_remember_count %>个</h2>
+<h3><%= @vocabulary.content %></h3>
+<button onclick="window.open('vocabularies/<%= @vocabulary.id %>')" />查看</button>
+
+<p>
+  <%= @example.original %>
+</p>
+<div id='div_zh_meaning' style='display: none;'>
+  <%= @example.zh_meaning %>
+</div>
+<br>
+<button onclick='show()'>查看中文</button>
+<button onclick='remember(true,<%= @example.id %>)'>记得</button>
+<button onclick='remember(false,<%= @example.id %>)'>不记得</button>
+
+
+<script>
+  function show() {
+      console.info('1')
+      $("#div_zh_meaning").show()
+  }
+  function remember(success,example_id){
+      var url = "/review/donot_remember"
+      if(success){
+          url = "/review/remember"
+      }
+      $.post(
+          url,
+          {'example_id':example_id},
+          function(returnedData,status){
+              location.reload();
+          }
+      );
+  }
+</script>

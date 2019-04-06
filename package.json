@@ -1,0 +1,7 @@
+{
+  "name": "english_book",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}

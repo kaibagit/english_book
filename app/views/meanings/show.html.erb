@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @meaning.vocabulary.content %></h1>
+
+<p style="color:#9b8d72;font-size: 14px;line-height: 24px;">
+  <%= @meaning.vocabulary.soundmark %>
+</p>
+
+<p style="margin-bottom: 20px;">
+  <a style='border-radius: 50%;text-align: center;line-height: 20px;background: #c1943b;width: 14px;height: 14px;display: inline-block;'></a>
+  <span style='line-height: 24px;font-size: 14px;color: #32220e;font-weight: 700;'>
+    <%= @meaning.en_meaning %><br>
+  </span>
+  <span style='color:#958d79;font-size: 16px;font-family: arial,sans-serif,"microsoft yahei",simhei;'>
+    <%= @meaning.kind %>
+  </span>
+  <span style='line-height: 24px;font-size: 14px;color: #32220e;'>
+    <%= @meaning.zh_meaning %>
+  </span>
+
+  <% @meaning.examples.each do |example| %>
+  <p>
+    <span>
+      <%= example.original %>
+    </span><br>
+    <span>
+      <%= example.zh_meaning %>
+    </span>
+  </p>
+<% end %>
+</p>
+
+<%= link_to 'Edit', edit_meaning_path(@meaning) %> |
+<%= link_to 'Back To Vocabulary', @meaning.vocabulary %> |
+<%= link_to 'New Example', new_example_path(meaning_id:@meaning.id) %>

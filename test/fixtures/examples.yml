@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  meaning_id: 1
+  original: MyString
+  zh_meaning: MyString
+
+two:
+  meaning_id: 1
+  original: MyString
+  zh_meaning: MyString

@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @vocabulary.content %></h1>
+
+<p style="color:#9b8d72;font-size: 14px;line-height: 24px;">
+  <%= @vocabulary.soundmark %>
+</p>
+
+<div style="height: 10px;"></div>
+
+<% @vocabulary.meanings.each do |meaning| %>
+<p style="margin-bottom: 20px;">
+  <a style='border-radius: 50%;text-align: center;line-height: 20px;background: #c1943b;width: 14px;height: 14px;display: inline-block;'></a>
+  <span style='line-height: 24px;font-size: 14px;color: #32220e;font-weight: 700;'>
+    <%= meaning.en_meaning %><br>
+  </span>
+  <span style='color:#958d79;font-size: 16px;font-family: arial,sans-serif,"microsoft yahei",simhei;'>
+    <%= meaning.kind %>
+  </span>
+  <span style='line-height: 24px;font-size: 14px;color: #32220e;'>
+    <%= meaning.zh_meaning %>
+  </span>
+  <%= link_to 'New Example', new_example_path(meaning_id:meaning.id), name:'new_example_link', style:'display: none' %>
+
+  <% meaning.examples.each do |example| %>
+  <p>
+    <span>
+      <%= example.original %>
+    </span><br>
+    <span>
+      <%= example.zh_meaning %>
+    </span>
+  </p>
+  <% end %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_vocabulary_path(@vocabulary) %> |
+<%= link_to 'Back', vocabularies_path %> |
+<%= link_to 'New Meaning', new_meaning_path(vocabulary_id:@vocabulary.id) %>
+<button onclick="show_links()">显示链接</button>
+<button onclick="hidden_links()">隐藏链接</button>
+
+<script>
+  function hidden_links(){
+      console.info("1")
+      $("a[name=new_example_link]").hide()
+  }
+  function show_links() {
+      $("a[name=new_example_link]").show()
+  }
+</script>
