@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @related_word.name %></h1>
+
+<form action="/related_words/<%= @related_word.id %>/add_vocabulary" accept-charset="UTF-8" method="post">
+
+  <div class="field">
+    <label for="related_word_name">vocabulary</label>
+    <input type="text" name="vocabulary" id="vocabulary" />
+  </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="Add Vocabulary"/>
+  </div>
+</form>

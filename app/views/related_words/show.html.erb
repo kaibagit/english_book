@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @related_word.name %></h1>
+
+<h3>关联单词：</h3>
+<ul>
+  <% @related_word.vocabularies.each do |vocabulary| %>
+    <li><%= link_to vocabulary.content,vocabulary %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_related_word_path(@related_word) %> |
+<%= link_to 'Back', related_words_path %>
+<%= link_to "Add Vocabulary", start_add_vocabulary_related_word_path(@related_word) %>

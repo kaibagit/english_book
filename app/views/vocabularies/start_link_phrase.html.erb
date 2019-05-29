@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @vocabulary.content %></h1>
+
+<form action="/vocabularies/<%= @vocabulary.id %>/link_phrase" accept-charset="UTF-8" method="post">
+
+  <div class="field">
+    <label for="related_word_name">phrase</label>
+    <input type="text" name="phrase" id="phrase" />
+  </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="关联"/>
+  </div>
+</form>

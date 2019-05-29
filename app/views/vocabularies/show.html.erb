@@ -41,6 +41,45 @@
 <button onclick="show_links()">显示链接</button>
 <button onclick="hidden_links()">隐藏链接</button>
 
+<br>
+<br>
+
+<% if @vocabulary.kind == 'word' %>
+<h3>短句：</h3>
+  <%= link_to '关联短句', start_link_phrase_vocabulary_path %>
+<ul>
+  <% @vocabulary.phrases.each do |phrase| %>
+    <li><%= link_to phrase.word_group.content,phrase.word_group %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<% if @vocabulary.kind == 'phrase' %>
+<h3>单词：</h3>
+<ul>
+  <% @vocabulary.words.each do |phrase| %>
+    <li><%= link_to phrase.word.content,phrase.word %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<br>
+<br>
+
+<h3>相关词：</h3>
+<% if @vocabulary.related_words.empty? %>
+  <%= link_to '增加相关词', new_related_word_path %>
+<% end %>
+<ul>
+  <% @vocabulary.related_words.each do |related_word| %>
+    <% related_word.vocabularies.each do |vocabulary| %>
+      <% unless vocabulary.id == @vocabulary.id %>
+        <li><%= link_to vocabulary.content,vocabulary %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
+
 <script>
   function hidden_links(){
       console.info("1")

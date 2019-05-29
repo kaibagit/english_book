@@ -1,5 +1,5 @@
 class VocabulariesController < ApplicationController
-  before_action :set_vocabulary, only: [:show, :edit, :update, :destroy]
+  before_action :set_vocabulary, only: [:show, :edit, :update, :destroy, :start_link_phrase, :link_phrase]
 
   # GET /vocabularies
   # GET /vocabularies.json
@@ -58,6 +58,21 @@ class VocabulariesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to vocabularies_url, notice: 'Vocabulary was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def start_link_phrase
+  end
+
+  def link_phrase
+    word_group = Vocabulary.find_by_content (params[:phrase])
+    phrase = Phrase.new(
+       :word => @vocabulary,
+       :word_group => word_group
+    )
+    phrase.save!
+    respond_to do |format|
+      format.html { redirect_to @vocabulary, notice: '与#{word_group.content}关联成功' }
     end
   end
 
