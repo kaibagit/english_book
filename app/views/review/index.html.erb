@@ -11,6 +11,18 @@
 <div id='div_zh_meaning' style='display: none;'>
   <%= @example.zh_meaning %>
 </div>
+<p id='p_meaning' style='display: none;'>
+  <a style='border-radius: 50%;text-align: center;line-height: 20px;background: #c1943b;width: 14px;height: 14px;display: inline-block;'></a>
+  <span style='line-height: 24px;font-size: 14px;color: #32220e;font-weight: 700;'>
+    <%= @example.meaning.en_meaning %><br>
+  </span>
+  <span style='color:#958d79;font-size: 16px;font-family: arial,sans-serif,"microsoft yahei",simhei;'>
+    <%= @example.meaning.kind %>
+  </span>
+  <span style='line-height: 24px;font-size: 14px;color: #32220e;'>
+    <%= @example.meaning.zh_meaning %>
+  </span>
+</p>
 <br>
 <button onclick='show()'>查看中文</button>
 <button onclick='remember(true,<%= @example.id %>)'>记得</button>
@@ -20,6 +32,7 @@
 <script>
   function show() {
       console.info('1')
+      $("#p_meaning").show()
       $("#div_zh_meaning").show()
   }
   function remember(success,example_id){

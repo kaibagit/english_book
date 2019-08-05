@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= form.label :kind %>
-    <%= form.text_field :kind %>
+    <%= select( "meaning", "kind", { "" => "", "noun" => "noun", "verb" => "verb", "adjective" => "adjective", "adverb" => "adverb", "pronoun" => "", "conjunction" => "conjunction"}) %>
   </div>
 
   <div class="field">

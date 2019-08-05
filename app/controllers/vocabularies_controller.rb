@@ -4,7 +4,7 @@ class VocabulariesController < ApplicationController
   # GET /vocabularies
   # GET /vocabularies.json
   def index
-    @vocabularies = Vocabulary.all
+    @vocabularies = Vocabulary.where( :kind => 'word').order("id DESC")
   end
 
   # GET /vocabularies/1
